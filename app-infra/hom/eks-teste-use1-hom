@@ -1,0 +1,67 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eks-pppix2-sae1-hom
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  project: addons
+  source:
+    helm:
+      parameters: []
+      valueFiles:
+        - values.yaml
+      values: |
+        addons:
+            argoRollouts:
+                enabled: true
+            certManager:
+                enabled: true
+            codekloudds:
+                enabled: true
+            ebs:
+                enabled: true
+            efs:
+                enabled: false
+            eniconfig:
+                enabled: true
+            falcon:
+                enabled: true
+            ingressNginx:
+                enabled: true
+            metricsServer:
+                enabled: true
+            nginx:
+                enabled: false
+            pcsup:
+                enabled: true
+            rbac:
+                enabled: true
+            stcFilebeat:
+                enabled: true
+            sunlightMetrics:
+                enabled: true
+            vault:
+                enabled: false
+            wiz:
+                enabled: true
+        nameCluster: eks-teste-use1-hom
+        destination:
+            name: eks-teste-use1-hom
+        source:
+            repoURL: https://github.com/PicPay/stack-terraform-eks-pppix2-ck-hom.git
+            targetRevision: HEAD
+        project: addons
+    path: app-of-apps
+    repoURL: https://github.com/PicPay/addons-aplication-config.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - PruneLast=true
+      - ApplyOutOfSyncOnly=true
