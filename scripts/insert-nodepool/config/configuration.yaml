@@ -1,0 +1,21 @@
+repos:
+  - stack-terraform-eks-ppbleble-ck-hom
+  - stack-terraform-eks-ppblabla-ck-prod
+
+provider:
+    - name: o11y-arm
+      family_list:
+        - c
+        - r
+        - m
+      tags:
+        squad: observability
+        standard_resource: "true"
+        tribe: production_engineering
+      arch: arm64
+
+git_branch:
+  - teste_branch
+git_commit_mensage:
+  - testando com String a minha funcaoo de commit
+
