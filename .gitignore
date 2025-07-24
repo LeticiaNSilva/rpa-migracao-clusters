@@ -1,0 +1,4 @@
+#Ignorar arquivos
+
+clusters.txt
+.env
