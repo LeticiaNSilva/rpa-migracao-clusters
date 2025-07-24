@@ -40,8 +40,6 @@ spec:
                 enabled: true
             stcFilebeat:
                 enabled: true
-            sunlightMetrics:
-                enabled: true
             vault:
                 enabled: false
             wiz:
